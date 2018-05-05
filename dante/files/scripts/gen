@@ -1,0 +1,18 @@
+#!/bin/sh
+
+set -e
+
+if [ -f "/tmp/dante_port" ]; then
+        PORT=`cat /tmp/dante_port`
+else
+        PORT="1080"
+fi
+
+USER_NAME=`apg -M NCL -m 16 -x 16 -n 1`
+PASSWORD=`apg -M NCL -m 16 -x 16 -n 1`
+
+adduser -D -H -S "${USER_NAME}"
+echo "${USER_NAME}:${PASSWORD}" | chpasswd -c SHA256
+
+echo "tg://socks?&user=${USER_NAME}&pass=${PASSWORD}&port=${PORT}&server="
+
