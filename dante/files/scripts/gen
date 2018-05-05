@@ -14,5 +14,5 @@ PASSWORD=`apg -M NCL -m 16 -x 16 -n 1`
 adduser -D -H -S "${USER_NAME}"
 echo "${USER_NAME}:${PASSWORD}" | chpasswd -c SHA256
 
-echo "tg://socks?&user=${USER_NAME}&pass=${PASSWORD}&port=${PORT}&server="
+echo "tg://socks?&user=${USER_NAME}&pass=${PASSWORD}&port=${PORT}&server=" 
 
